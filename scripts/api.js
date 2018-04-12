@@ -1,5 +1,5 @@
 'use strict';
-/* global store, api, bookmark-list*/
+/* global store, api, bookmarkList*/
 
 // eslint-disable-next-line no-unused-vars
 const api = (function(){

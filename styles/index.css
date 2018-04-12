@@ -5,14 +5,23 @@
 
 body {
   font-family: 'Roboto', sans-serif;
+  max-width: 600px;
+  margin: 0 auto;
 
+}
+
+h1 {
+  margin-bottom: 0px;
+}
+
+.hidden {
+  display: none;
 }
 
 main {
-  max-width: 600px;
-
+  margin: 0px;
+  padding: 0px;
 }
-
 button, input[type="text"] {
   padding: 5px;
 }
@@ -24,6 +33,30 @@ button:hover {
 .bookmark-list {
   list-style: none;
   padding-left: 0;
+}
+.bookmark-list > li {
+  margin-bottom: 20px;
+  border: 1px solid grey;
+  padding: 20px;
+  background-color: lemonchiffon
+}
+
+.bookmark-title-container {
+  background-color: lightpink;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.bookmark-title {
+  text-decoration: lightslategrey;
+  font-size: large;
+  max-width: 100%;
+
+}
+
+.bookmark-rating {
+  text-decoration: lightslategrey;
+  font-size: large;
 }
 
 

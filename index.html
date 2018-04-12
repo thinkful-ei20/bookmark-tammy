@@ -28,8 +28,24 @@
           <option value = 5>5</option>
         </select>
       </form>
+     
+      <form class="js-bookmark-list-form">
+          <label for="bookmark-list-entry">Add a bookmark</label>
+          <input type="text" name="bookmark-list-url" class="js-bookmark-list-entry" placeholder="Write url here">
+          <input type="text" name="bookmark-list-title" class="js-bookmark-list-title" placeholder="Write bookmark title here">
+          <input type="text" name="bookmark-list-description" class="js-bookmark-list-description" placeholder="Write bookmark description here">
+          <select name = "rating" class = "sort-by-rating">
+              <option value = 1>1</option>
+              <option value = 2>2</option>
+              <option value = 3>3</option>
+              <option value = 4>4</option>
+              <option value = 5>5</option>
+            </select>
+          <button type="submit">submit</button>
+      </form>
+  
 
-      <ul class = "bookmark-list">List of bookmarks will be displayed here:</ul>
+      <ul class = "bookmark-list js-bookmark-list">List of bookmarks will be displayed here:</ul>
 
 
     </main>
@@ -38,7 +54,7 @@
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="scripts/api.js"></script>
   <script type="text/javascript" src="scripts/store.js"></script>
-  <script type="text/javascript" src="scripts/bookmark-list.js"></script>
+  <script type="text/javascript" src="scripts/bookmarkList.js"></script>
   <script type="text/javascript" src="scripts/index.js"></script>
 </body>
 </html>
