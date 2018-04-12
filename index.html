@@ -13,16 +13,29 @@
     <header role ="banner"></header>
       <h1 >Bookmark List</h1>
     <main role = "main">
-      <section role = "region">
-        <button class = ></button> 
+`
+      <form class = "bookmark-list-controls">
+          <button class="shopping-item-toggle js-item-toggle">
+              <span class="button-label">check</span>
+            </button>
 
-      </section>
-      <section role = "region">
+        <button class = "add-item js-add-item">
+          <span class = "Add bookmark">Add bookmark</span>
+        </button> 
 
-      </section>
+        <select name = "rating" class = "sort-by-rating">
+          <option value = 1>1</option>
+          <option value = 2>2</option>
+          <option value = 3>3</option>
+          <option value = 4>4</option>
+          <option value = 5>5</option>
+        </select>
+      </form>
+
+      <ul class = "bookmark-list">List of bookmarks will be displayed here:</ul>
 
 
     </main>
-    <footer role = "content info">© Tammy Tian</footer>
+    <footer role = "content info"> © Tammy Tian</footer>
 </body>
 </html>
