@@ -5,11 +5,12 @@
 
 body {
   font-family: 'Roboto', sans-serif;
+
 }
 
 main {
   max-width: 600px;
-  margin: 0 auto;
+
 }
 
 button, input[type="text"] {
