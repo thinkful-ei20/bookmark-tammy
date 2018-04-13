@@ -10,4 +10,5 @@ $(document).ready(function() {
   bookmarkList.handleAddBookmark();
   bookmarkList.handleToggleForm();
   bookmarkList.handleFilterByRating();
+  bookmarkList.handleDisplayDetails();
 });

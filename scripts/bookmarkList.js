@@ -4,13 +4,18 @@
 const bookmarkList = (function (){
 
   const generateBookmarkElement = function (bookmark){
-    // bookmarkRating =  
-    
+    let bookmarkDetails = `<div class = 'bookmark-desc'>${bookmark.desc} </div>`;
+    if (!bookmark.displayDetails)
+      `<div class = 'bookmark-desc hidden'>${bookmark.desc} </div>`;
+
     return `<li class = 'bookmark-list-element' data-item-id= '${bookmark.id}'>
-      <div class = 'bookmark-title-container'><span class = 'bookmark-title'>  ${bookmark.title}  </span></div>
-      <div class = 'bookmark-rating'>
-        ${bookmark.rating}
-      </div>`;
+      <div class = 'bookmark-title-container'>
+        <span class = 'bookmark-title'>  ${bookmark.title}  </span></div>
+        <div class = 'bookmark-rating'> ${bookmark.rating}
+        </div>
+        ${bookmarkDetails}
+        </li>`;
+       
   };
 
   //unifies html of all items in array
@@ -27,6 +32,7 @@ const bookmarkList = (function (){
       $('#js-bookmark-list-form').hide();
       $('.bookmark-list-controls').show();
     } else {
+
       $('.bookmark-list-controls').hide();
       $('#js-bookmark-list-form').show();
     }
@@ -36,6 +42,9 @@ const bookmarkList = (function (){
       bookmarks = store.bookmarks.filter((bookmark) => bookmark.rating >= store.filterRatingValue);
     }
 
+    // if (store.showDetails === false) {
+    //   $('.details').hide();
+    // }
 
 
 
@@ -45,6 +54,13 @@ const bookmarkList = (function (){
     $('.js-bookmark-list').html(completeBookmarkListString);
   };
 
+
+  //retrieve ids from the server
+  function getItemIdFromElement(bookmark) {
+    return $(bookmark)
+      .closest('.js-item-element')
+      .data('item-id');
+  }
   //below here are handler functions    
 
   const handleToggleForm = function () {
@@ -60,6 +76,7 @@ const bookmarkList = (function (){
     $('.submit-button').click(function(event) {
       event.preventDefault();
       store.addNewBookmark = !store.addNewBookmark;
+
       console.log('this submit button worked!');
       const newTitle = $('.js-bookmark-list-title').val();
       const newUrl = $('.js-bookmark-list-url').val();
@@ -73,7 +90,15 @@ const bookmarkList = (function (){
     });
   };
 
-  
+  const handleDisplayDetails = function () {
+    $('.js-bookmark-list').on('click','.bookmark-title-container', function(event){
+      console.log('title has been clicked');
+      // store.displayDetails = !store.displayDetails;
+      // const id = getItemIdFromElement(event.currentTarget);
+      // store.findAndShowDetails(id);
+      // render ();
+    });
+  };
 
   const handleFilterByRating = function(){
     $('#js-sort-by-rating').click(function() {
@@ -89,6 +114,7 @@ const bookmarkList = (function (){
     handleToggleForm,
     handleAddBookmark,
     handleFilterByRating,
+    handleDisplayDetails,
     render,
   };
 
