@@ -71,9 +71,6 @@ const bookmarkList = (function (){
       console.log('button clicked');
       store.addNewBookmark = !store.addNewBookmark;
       render(); 
-    },(errorData,statusText, errorThrown) => {
-      console.log(errorData, statusText, errorThrown);
-      store.setError(errorData.responseJSON.message);
     }
     );
   };
@@ -89,11 +86,10 @@ const bookmarkList = (function (){
       api.createBookmark(newTitle, newUrl, desc, rating, function(newBookmark) {
         store.addBookmark(newBookmark);
         render();
+      } ,(errorData,statusText, errorThrown) => {
+        console.log(errorData, statusText, errorThrown);
+        store.setError(errorData.responseJSON.message);
       }
-      // ,(errorData,statusText, errorThrown) => {
-      //   console.log(errorData, statusText, errorThrown);
-      //   store.setError(errorData.responseJSON.message);
-      // }
       );
     });
   };
@@ -107,10 +103,6 @@ const bookmarkList = (function (){
       store.findAndDisplay(bookmark);
       render ();
     }
-    // , (errorData,statusText, errorThrown) => {
-    //   console.log(errorData, statusText, errorThrown);
-    //   store.setError(errorData.responseJSON.message);
-    // }
     );
   };
 
@@ -122,10 +114,6 @@ const bookmarkList = (function (){
       store.setFilterRating(ratingValue);
       render();
     }
-    // ,(errorData,statusText, errorThrown) => {
-    //   console.log(errorData, statusText, errorThrown);
-    //   store.setError(errorData.responseJSON.message);
-    // }
     );
   };
 
@@ -137,10 +125,6 @@ const bookmarkList = (function (){
       store.openURL(bookmark);
       render();
     }
-    // ,(errorData,statusText, errorThrown) => {
-    //   console.log(errorData, statusText, errorThrown);
-    //   store.setError(errorData.responseJSON.message);
-    // }
     )
     );
   };
@@ -152,11 +136,10 @@ const bookmarkList = (function (){
       api.deleteBookmark(id, function() {
         store.deleteBookmark(id);
         render();
+      } ,(errorData,statusText, errorThrown) => {
+        console.log(errorData, statusText, errorThrown);
+        store.setError(errorData.responseJSON.message);
       }
-      // ,(errorData,statusText, errorThrown) => {
-      //   console.log(errorData, statusText, errorThrown);
-      //   store.setError(errorData.responseJSON.message);
-      // }
       );
     })
     );
