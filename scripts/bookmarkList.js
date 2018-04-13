@@ -116,10 +116,9 @@ const bookmarkList = (function (){
     $('.js-bookmark-list').on('click', '.go-to-link', (function() {
       console.log('visit clicked');
       const id = getItemIdFromElement(event.target);
-      console.log(id);
-      // let bookmark = store.findbyID(id);
-      // store.openURL(bookmark);
-      // render();
+      let bookmark = store.findbyID(id);
+      store.openURL(bookmark);
+      render();
     })
     );
   };
@@ -128,8 +127,10 @@ const bookmarkList = (function (){
     $('.js-bookmark-list').on('click', '.delete', (function() {
       console.log('delete clicked');
       const id = getItemIdFromElement(event.target);
-      console.log(id);
-      render();
+      api.deleteBookmark(id, function() {
+        store.deleteBookmark(id);
+        render();
+      });
     })
     );
   };

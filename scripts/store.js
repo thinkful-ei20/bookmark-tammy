@@ -21,7 +21,11 @@ const store = (function () {
   const openURL = function (bookmark){
     console.log(bookmark);
     let url = bookmark.url;
-    window.open(url, '_parent');
+    window.open(url, '_blank');
+  };
+
+  const deleteBookmark = function(id) {
+    this.bookmarks = this.bookmarks.filter(bookmark => bookmark.id !== id);
   };
 
   return {
@@ -35,5 +39,6 @@ const store = (function () {
     setFilterRating,
     findAndDisplay,
     openURL,
+    deleteBookmark,
   };
 })();
