@@ -7,11 +7,7 @@ $(document).ready(function() {
     bookmarks.forEach((bookmark) => store.addBookmark(bookmark));
     bookmarkList.render();
   });
-  bookmarkList.handleAddBookmark();
-  bookmarkList.handleToggleForm();
-  bookmarkList.handleFilterByRating();
-  bookmarkList.handleDisplayDetails();
-  bookmarkList.handleVisit();
-  bookmarkList.handleDelete();
+  bookmarkList.bindEventHandlers();
+  
 
 });

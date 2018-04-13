@@ -5,10 +5,10 @@
 const api = (function(){
   const BASE_URL = 'https://thinkful-list-api.herokuapp.com/tammy';
 
-  let getBookmarks = function(callback) {
-    $.getJSON(`${BASE_URL}/bookmarks`, callback);
+  let getBookmarks = function(success) {
+    $.getJSON(`${BASE_URL}/bookmarks`, success);
   };
-  let createBookmark = function(title, url, desc, rating, callback){
+  let createBookmark = function(title, url, desc, rating, success, error){
     let newBookmark = JSON.stringify({
       title,
       url,
@@ -21,16 +21,18 @@ const api = (function(){
       method: 'POST',
       contentType: 'application/json',
       data: newBookmark,
-      success: callback, 
+      success: success,
+      error: error, 
     });
   };
 
-  let deleteBookmark = function(id, callback) {
+  let deleteBookmark = function(id, success, error) {
     $.ajax({
       url: `${BASE_URL}/bookmarks/${id}`,
       method: 'DELETE',
       contentType: 'application/json',
-      success: callback,
+      success: success,
+      error: error,
     });
   };
 

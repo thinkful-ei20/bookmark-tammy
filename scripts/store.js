@@ -28,11 +28,17 @@ const store = (function () {
     this.bookmarks = this.bookmarks.filter(bookmark => bookmark.id !== id);
   };
 
+  const setError = function (errorThrown) {
+    this.error = $('.error-message').text(errorThrown);
+    return this.error = null;
+  };
+
   return {
     bookmarks:[],
     addNewBookmark: false,
     filterRatingValue: null,
     displayDetails: false,
+    error: null,
 
     findbyID,
     addBookmark,
@@ -40,5 +46,6 @@ const store = (function () {
     findAndDisplay,
     openURL,
     deleteBookmark,
+    setError,
   };
 })();

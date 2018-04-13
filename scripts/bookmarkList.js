@@ -71,23 +71,30 @@ const bookmarkList = (function (){
       console.log('button clicked');
       store.addNewBookmark = !store.addNewBookmark;
       render(); 
-    });
-
+    },(errorData,statusText, errorThrown) => {
+      console.log(errorData, statusText, errorThrown);
+      store.setError(errorData.responseJSON.message);
+    }
+    );
   };
   const handleAddBookmark = function (){
     $('.submit-button').click(function(event) {
       event.preventDefault();
       store.addNewBookmark = !store.addNewBookmark;
-      console.log('this submit button worked!');
       const newTitle = $('.js-bookmark-list-title').val();
       const newUrl = $('.js-bookmark-list-url').val();
       const desc =  $('.js-bookmark-list-desc').val();
       const rating = $('.js-bookmark-list-rating').val();
-      console.log(newTitle);
+      
       api.createBookmark(newTitle, newUrl, desc, rating, function(newBookmark) {
         store.addBookmark(newBookmark);
         render();
-      });
+      }
+      // ,(errorData,statusText, errorThrown) => {
+      //   console.log(errorData, statusText, errorThrown);
+      //   store.setError(errorData.responseJSON.message);
+      // }
+      );
     });
   };
 
@@ -99,7 +106,12 @@ const bookmarkList = (function (){
       let bookmark = store.findbyID(id);
       store.findAndDisplay(bookmark);
       render ();
-    });
+    }
+    // , (errorData,statusText, errorThrown) => {
+    //   console.log(errorData, statusText, errorThrown);
+    //   store.setError(errorData.responseJSON.message);
+    // }
+    );
   };
 
 
@@ -109,7 +121,12 @@ const bookmarkList = (function (){
       console.log('rating has been clicked');
       store.setFilterRating(ratingValue);
       render();
-    });
+    }
+    // ,(errorData,statusText, errorThrown) => {
+    //   console.log(errorData, statusText, errorThrown);
+    //   store.setError(errorData.responseJSON.message);
+    // }
+    );
   };
 
   const handleVisit = function(){
@@ -119,7 +136,12 @@ const bookmarkList = (function (){
       let bookmark = store.findbyID(id);
       store.openURL(bookmark);
       render();
-    })
+    }
+    // ,(errorData,statusText, errorThrown) => {
+    //   console.log(errorData, statusText, errorThrown);
+    //   store.setError(errorData.responseJSON.message);
+    // }
+    )
     );
   };
  
@@ -130,19 +152,27 @@ const bookmarkList = (function (){
       api.deleteBookmark(id, function() {
         store.deleteBookmark(id);
         render();
-      });
+      }
+      // ,(errorData,statusText, errorThrown) => {
+      //   console.log(errorData, statusText, errorThrown);
+      //   store.setError(errorData.responseJSON.message);
+      // }
+      );
     })
     );
   };
- 
+  
+  const bindEventHandlers = function(){
+    handleToggleForm();
+    handleAddBookmark();
+    handleFilterByRating();
+    handleDisplayDetails();
+    handleVisit();
+    handleDelete();
+  };
+
   return {
-    generateBookmarkElement,
-    handleToggleForm,
-    handleAddBookmark,
-    handleFilterByRating,
-    handleDisplayDetails,
-    handleVisit,
-    handleDelete,
+    bindEventHandlers,
     render,
   };
 })();
