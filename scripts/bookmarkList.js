@@ -4,16 +4,24 @@
 const bookmarkList = (function (){
 
   const generateBookmarkElement = function (bookmark){
-    let bookmarkDetails = `<div class = 'bookmark-desc'>${bookmark.desc} </div>`;
-    if (!bookmark.displayDetails)
-      `<div class = 'bookmark-desc hidden'>${bookmark.desc} </div>`;
-
+    let details = `<div class = 'bookmark-desc'>${bookmark.desc}</div> 
+      <div class ='bookmark-controls'>
+        <button class='go-to-link'>
+          <span class = 'button-label'> Visit </span>
+        </button>
+        <button class = 'delete'>
+          <span class = 'button-label'> X </span>
+        </button>`;
+    if (bookmark.display !== true) {
+      details =`<div class = 'bookmark-desc hidden'>${bookmark.desc}</div>`;
+    }
     return `<li class = 'bookmark-list-element' data-item-id= '${bookmark.id}'>
+      
       <div class = 'bookmark-title-container'>
         <span class = 'bookmark-title'>  ${bookmark.title}  </span></div>
         <div class = 'bookmark-rating'> ${bookmark.rating}
         </div>
-        ${bookmarkDetails}
+        ${details}
         </li>`;
        
   };
@@ -58,7 +66,7 @@ const bookmarkList = (function (){
   //retrieve ids from the server
   function getItemIdFromElement(bookmark) {
     return $(bookmark)
-      .closest('.js-item-element')
+      .closest('.bookmark-list-element')
       .data('item-id');
   }
   //below here are handler functions    
@@ -76,7 +84,6 @@ const bookmarkList = (function (){
     $('.submit-button').click(function(event) {
       event.preventDefault();
       store.addNewBookmark = !store.addNewBookmark;
-
       console.log('this submit button worked!');
       const newTitle = $('.js-bookmark-list-title').val();
       const newUrl = $('.js-bookmark-list-url').val();
@@ -93,12 +100,14 @@ const bookmarkList = (function (){
   const handleDisplayDetails = function () {
     $('.js-bookmark-list').on('click','.bookmark-title-container', function(event){
       console.log('title has been clicked');
-      // store.displayDetails = !store.displayDetails;
-      // const id = getItemIdFromElement(event.currentTarget);
-      // store.findAndShowDetails(id);
-      // render ();
+      const id = getItemIdFromElement(event.currentTarget);
+      console.log(id);
+      let bookmark = store.findbyID(id);
+      store.findAndDisplay(bookmark);
+      render ();
     });
   };
+
 
   const handleFilterByRating = function(){
     $('#js-sort-by-rating').click(function() {
@@ -108,13 +117,22 @@ const bookmarkList = (function (){
       render();
     });
   };
+
+  const handleVisit = function(){
+    
+  };
  
+  const handleDelete = function(){
+
+  };
   return {
     generateBookmarkElement,
     handleToggleForm,
     handleAddBookmark,
     handleFilterByRating,
     handleDisplayDetails,
+    handleVisit,
+    handleDelete,
     render,
   };
 

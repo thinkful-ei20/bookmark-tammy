@@ -13,10 +13,11 @@ const store = (function () {
     this.filterRatingValue = ratingvalue;
   };
 
-  // const findAndShowDetails = function (id) {
-  //   let targetBookmark = this.bookmarks(bookmark => bookmark.id === id);
-  //  console.log(targetBookmark;)
-  // };
+  //takes in bookmark object
+  const findAndDisplay = function (bookmark) {
+    bookmark.display = !bookmark.display;
+    console.log(bookmark);
+  };
 
   return {
     bookmarks:[],
@@ -27,7 +28,7 @@ const store = (function () {
     findbyID,
     addBookmark,
     setFilterRating,
-    //findAndShowDetails,
+    findAndDisplay,
 
   };
 })();
