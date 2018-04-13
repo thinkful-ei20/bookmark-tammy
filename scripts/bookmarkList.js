@@ -50,12 +50,6 @@ const bookmarkList = (function (){
       bookmarks = store.bookmarks.filter((bookmark) => bookmark.rating >= store.filterRatingValue);
     }
 
-    // if (store.showDetails === false) {
-    //   $('.details').hide();
-    // }
-
-
-
     console.log('render ran');
     console.log(bookmarks);
     const completeBookmarkListString = generateBookmarkList(bookmarks);
@@ -119,7 +113,15 @@ const bookmarkList = (function (){
   };
 
   const handleVisit = function(){
-    
+    $('.js-bookmark-list').on('click', '.go-to-link', (function() {
+      console.log('visit clicked');
+      const id = getItemIdFromElement(event.currentTarget);
+      console.log(id);
+      let bookmark = store.findbyID(id);
+      store.openURL(bookmark);
+      render();
+    })
+    );
   };
  
   const handleDelete = function(){

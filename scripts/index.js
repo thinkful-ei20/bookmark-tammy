@@ -11,4 +11,7 @@ $(document).ready(function() {
   bookmarkList.handleToggleForm();
   bookmarkList.handleFilterByRating();
   bookmarkList.handleDisplayDetails();
+  bookmarkList.handleVisit();
+  bookmarkList.handleDelete();
+
 });

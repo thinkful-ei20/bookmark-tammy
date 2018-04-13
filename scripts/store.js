@@ -16,7 +16,12 @@ const store = (function () {
   //takes in bookmark object
   const findAndDisplay = function (bookmark) {
     bookmark.display = !bookmark.display;
+  };
+
+  const openURL = function (bookmark){
     console.log(bookmark);
+    let url = bookmark.url;
+    window.open(url, '_parent');
   };
 
   return {
@@ -29,6 +34,6 @@ const store = (function () {
     addBookmark,
     setFilterRating,
     findAndDisplay,
-
+    openURL,
   };
 })();
