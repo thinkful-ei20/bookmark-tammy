@@ -6,11 +6,17 @@ const store = (function () {
     this.bookmarks.push(bookmark);
   };
 
+  const setFilterRating = function (ratingvalue) {
+    this.filterRatingValue = ratingvalue;
+  };
 
 
   return {
     bookmarks:[],
     addNewBookmark: false,
+    filterRatingValue: null,
     addBookmark,
+    setFilterRating,
+
   };
 })();

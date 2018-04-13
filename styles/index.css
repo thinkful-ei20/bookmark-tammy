@@ -59,4 +59,7 @@ button:hover {
   font-size: large;
 }
 
+#js-bookmark-list-form {
+  display: none;
+}
 

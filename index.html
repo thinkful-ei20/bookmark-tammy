@@ -14,7 +14,7 @@
       <h1 >Bookmark List</h1>
     <main role = "main">
 
-        <form class ="js-bookmark-list-form">
+        <form id ="js-bookmark-list-form">
             <label for="new-bookmark-list-entry">Add a bookmark</label>
             <input type="text" name="bookmark-list-url" class="js-bookmark-list-url" placeholder="Write url here">
             <input type="text" name="bookmark-list-title" class="js-bookmark-list-title" placeholder="Write bookmark title here">
@@ -28,21 +28,21 @@
               </select>
             <button class = "submit-button" type = "submit">submit</button>
         </form>
-`
       <form class = "bookmark-list-controls">
 
-        <button class = "add-item js-add-item">
+        <button id = "add-item js-add-bookmark">
           <span class = "Add bookmark">Add bookmark</span>
         </button> 
-
-        <select name = "rating" class = "sort-by-rating">
-          <option value = 1>1</option>
-          <option value = 2>2</option>
-          <option value = 3>3</option>
-          <option value = 4>4</option>
-          <option value = 5>5</option>
-        </select>
       </form>
+
+      <select name = "rating" id = "js-sort-by-rating">
+        <option value = 1>1</option>
+        <option value = 2>2</option>
+        <option value = 3>3</option>
+        <option value = 4>4</option>
+        <option value = 5>5</option>
+      </select>
+    
      
       
   

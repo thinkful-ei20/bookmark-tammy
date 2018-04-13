@@ -8,4 +8,6 @@ $(document).ready(function() {
     bookmarkList.render();
   });
   bookmarkList.handleAddBookmark();
+  bookmarkList.handleToggleForm();
+  bookmarkList.handleFilterByRating();
 });
