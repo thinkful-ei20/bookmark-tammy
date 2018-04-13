@@ -13,6 +13,21 @@
     <header role ="banner"></header>
       <h1 >Bookmark List</h1>
     <main role = "main">
+
+        <form class ="js-bookmark-list-form">
+            <label for="new-bookmark-list-entry">Add a bookmark</label>
+            <input type="text" name="bookmark-list-url" class="js-bookmark-list-url" placeholder="Write url here">
+            <input type="text" name="bookmark-list-title" class="js-bookmark-list-title" placeholder="Write bookmark title here">
+            <input type="text" name="bookmark-list-description" class="js-bookmark-list-description" placeholder="Write bookmark description here">
+            <select name = "rating" class = "js-bookmark-list-rating">
+                <option value = 1>1</option>
+                <option value = 2>2</option>
+                <option value = 3>3</option>
+                <option value = 4>4</option>
+                <option value = 5>5</option>
+              </select>
+            <button class = "submit-button" type = "submit">submit</button>
+        </form>
 `
       <form class = "bookmark-list-controls">
 
@@ -29,20 +44,7 @@
         </select>
       </form>
      
-      <form class="js-bookmark-list-form">
-          <label for="bookmark-list-entry">Add a bookmark</label>
-          <input type="text" name="bookmark-list-url" class="js-bookmark-list-entry" placeholder="Write url here">
-          <input type="text" name="bookmark-list-title" class="js-bookmark-list-title" placeholder="Write bookmark title here">
-          <input type="text" name="bookmark-list-description" class="js-bookmark-list-description" placeholder="Write bookmark description here">
-          <select name = "rating" class = "sort-by-rating">
-              <option value = 1>1</option>
-              <option value = 2>2</option>
-              <option value = 3>3</option>
-              <option value = 4>4</option>
-              <option value = 5>5</option>
-            </select>
-          <button type="submit">submit</button>
-      </form>
+      
   
 
       <ul class = "bookmark-list js-bookmark-list">List of bookmarks will be displayed here:</ul>

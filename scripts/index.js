@@ -7,5 +7,5 @@ $(document).ready(function() {
     bookmarks.forEach((bookmark) => store.addBookmark(bookmark));
     bookmarkList.render();
   });
+  bookmarkList.handleAddBookmark();
 });
-
